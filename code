@@ -1,0 +1,99 @@
+//bubble sort for 50 numeric items 
+
+#include <iostream> 
+#include <cstdlib> 
+
+using namespace std; 
+bool BinarySearch(int *array, int size, int value);
+int main ()
+
+{   
+	
+	int i,j ; 
+	int myArray[50]; 
+	int guessnumber;
+	//Random Number Generator
+	unsigned seed, randomNum;
+
+
+
+
+seed = ((unsigned int)  (50));
+
+srand(seed);
+    
+     randomNum = 1+rand () % 100;
+
+
+	
+	for(int index = 0; index <50; index++)
+	{
+	randomNum = 1+rand () % 100;
+	   myArray[index]= (randomNum)
+
+	 ;}
+	
+	for(int index = 0; index < 50; index++)
+	{
+
+	cout << myArray[index] << ",";
+	}
+	cout << endl;
+
+	//cout <<" sorting....." << myArray[50]<<"\n";
+	system("pause");
+
+	cout<<"Sorting ....\n"<<endl;
+for ( i = 0; i < 49; i++)
+for ( j = 49; j > i; j--)
+if (myArray[j-1] > myArray[j])
+{
+int temp = myArray[j-1];
+myArray[j-1] = myArray[j];
+myArray[j] = temp;
+}
+
+// prints sorted array
+for(int index = 0; index < 50; index++)
+	{
+
+	cout << myArray[index] << ",";
+	}
+	cout << endl;	
+	
+	cout<<"Alright then please input a number (0-999) to search for : ";
+
+	cin>> guessnumber;
+	//Call the BinarySearch Function 
+	if (BinarySearch(myArray, 50, guessnumber))
+		cout<<"Your input: " <<guessnumber<< " was found!" <<endl;
+	else
+		cout<<"I'm so sorry your number was not found!" <<endl;
+
+
+	
+	return 0;
+}
+
+
+	 bool BinarySearch(int *array, int size, int value)
+{
+	if (size==0 || value>array[size-1])
+			return false;
+	else
+	{
+		int i, j, k;
+		i = 0;
+		j = size-1;
+
+		while (i < j)
+		{
+			k = (i+j) / 2;
+
+			if (value < array[k])
+					j = k+1;
+		}
+		return (value==array[i]) ? true : false;
+	}
+	} 
+
